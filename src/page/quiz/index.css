@@ -1,0 +1,147 @@
+* {
+    user-select: none;
+}
+
+.start {
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 40%;
+    width: 60%;
+    background-color: rgb(217, 218, 221);
+    padding: 3vh 3vw;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.clause {
+    margin-top: 1vh;
+}
+
+.button {
+    margin-top: 2vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(109, 179, 251);
+    height: 20%;
+    width: 15%;
+    border-radius: 8%;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: rgb(140, 200, 250);
+}
+
+.forbid {
+    margin-top: 2vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(177, 177, 173);
+    height: 20%;
+    width: 15%;
+    border-radius: 8%;
+}
+
+.test {
+    padding: 3vh 3vw;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+}
+
+.questions {
+    margin-top: 4vh;
+}
+
+.question {
+    margin-top: 2vh;
+}
+
+.answer {
+    margin-top: 1vh;
+}
+
+.right {
+    background-color: greenyellow;
+}
+
+.error {
+    background-color: indianred;
+}
+
+.result {
+    background-color: rgb(140, 200, 250);
+}
+
+input[type=radio] {
+    margin-left: 1vw;
+    margin-right: .3vw;
+}
+
+.submit {
+    margin-top: 4vh;
+    width: 5vw;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(109, 179, 251);
+    border-radius: 8%;
+    cursor: pointer;
+}
+
+.submit:hover {
+    background-color: rgb(180, 200, 251);
+}
+
+.no-submit {
+    margin-top: 4vh;
+    width: 5vw;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(177, 179, 180);
+    border-radius: 8%;
+}
+
+.radio {
+    width: 100%;
+    margin: 1vh;
+    padding-left: 1vw;
+}
+
+.radio:hover {
+    background-color: rgb(109, 179, 251);
+}
+
+label {
+    height: 100%;
+    width: 100%;
+}
+
+.timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 10;
+    right: 3vw;
+    top: 15vh;
+    height: 8vh;
+    width: 8vw;
+    border-radius: 18%;
+    background-color: rgb(96, 185, 244);
+    color: white;
+}

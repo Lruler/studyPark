@@ -1,0 +1,44 @@
+.bcimg {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    background-image: url(./img/bc.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.entring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 60%;
+    width: 60%;
+}
+
+.entring-msg {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 40%;
+    width: 60%;
+    z-index: 10;
+}
+
+.entring-button {
+    color: black;
+    background-color: wheat;
+    cursor: pointer;
+    text-align: center;
+    width: 5%;
+    border-radius: 10%;
+}
+
+.entring-button:hover {
+    background-color: rgb(240, 183, 78);
+}
