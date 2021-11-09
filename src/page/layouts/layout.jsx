@@ -12,7 +12,7 @@ export default function Layouts() {
                 <Routes>
                     <Route path='/' element={<Teach />} />
                     <Route path='quiz' element={<Quiz />} />
-                    <Route path='dissection' element={<Dissection />} />
+                    <Route path='dissection/:count' element={<Dissection />} />
                 </Routes>
             </Layout>
         </div>

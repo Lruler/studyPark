@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import PubSub from 'pubsub-js'
 import { Layout, Menu, Avatar, Badge } from 'antd'
-import { useNavigate } from 'react-router'
+import { useNavigate, useLocation } from 'react-router'
 import './index.css'
 import { DesktopOutlined, PieChartOutlined, UserOutlined } from '@ant-design/icons'
 
@@ -9,6 +9,7 @@ const { Header, Content, Sider } = Layout
 
 const Layouts = (props) => {
     const navigate = useNavigate()
+    const location = useLocation()
     const [count, setCount] = useState(0)
     const handleTo = (url) => {
         switch (url) {
@@ -19,7 +20,7 @@ const Layouts = (props) => {
                 navigate('/layout/quiz')
                 break;
             default:
-                navigate('/layout/dissection')
+                navigate('/layout/dissection/' + count)
                 break;
         }
     }
@@ -28,13 +29,17 @@ const Layouts = (props) => {
         let token = PubSub.subscribe('msg', (_, data) => {
             setTimeout(() => {
                 setCount(data)
-                console.log(count)
-            }, 180000)
+            }, 2000)
         })
         return () => {
             PubSub.unsubscribe(token)
         }
-    })
+    }, [])
+    useEffect(() => {
+        if (location.pathname.includes('/layout/dissection')) {
+            setCount(0)
+        }
+    }, [location])
     return (
         <Layout className="lay" style={{ minHeight: '100vh' }}>
             <Sider className="sider">
@@ -53,7 +58,7 @@ const Layouts = (props) => {
                     </Menu.Item>
                     <Menu.Item className='diss' key="diss" onClick={() => handleTo(3)} icon={<UserOutlined />}>
                         {
-                            count ?
+                            count === 4 ?
                                 <div className="msg">
                                     {count}
                                 </div> : null
