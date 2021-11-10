@@ -2,11 +2,18 @@ import React from 'react'
 import { useLocation } from 'react-router'
 import { Avatar } from 'antd'
 import { UserOutlined } from '@ant-design/icons'
-import { test } from '../quiz'
+import { test } from '../layouts/layout'
 import './index.css'
+import Questions from '../../components/question'
 
 
-export default function Dissection() {
+export default function Dissection(props) {
+    // const c = [3, 4, 5, 6]
+    const newTest = props.test.filter((_, index) => {
+        if (index === 3 || 4 || 5 || 6)
+            return true
+        return false
+    })
     const location = useLocation()
     const comment = location.pathname[location.pathname.length - 1]
     return (
@@ -15,12 +22,12 @@ export default function Dissection() {
                 comment === '4' ?
                 <div className='body'>
                     {
-                        test.map((ques, index) => {
+                        newTest.map((_, index) => {
                             return (
-                                <>
-                                    <div key={index} className="comment">
+                                <div key={index}>
+                                    <div className="comment">
                                         <div className="question">
-                                            {ques.question}
+                                            <Questions {...props} test={newTest} />
                                         </div>
                                     </div>
                                     <div className="reply">
@@ -34,7 +41,7 @@ export default function Dissection() {
                                         </div>
                                     </div>
                                     <div className="hr"></div>
-                                </>
+                                </div>
                             )
                         })
                     }
