@@ -1,4 +1,5 @@
 import React from 'react'
+import './index.css'
 
 export default function Questions(props) {
     const { test, opt, answer, result, handleAnswer } = props
@@ -6,10 +7,9 @@ export default function Questions(props) {
         <div className="questions">
             {
                 test.map((e, index) => {
-                    let num = index + 1
                     return (
                         <div key={e.question} >
-                            <div className="question">{num + '.' + e.question}</div>
+                            <div className="question">{e.question}</div>
                             <div className="answer">
                                 {e.answer.map((a, as) => {
                                     const n = index + '' + as

@@ -60,35 +60,6 @@
     background-color: white;
 }
 
-.questions {
-    margin-top: 4vh;
-}
-
-.question {
-    margin-top: 2vh;
-}
-
-.answer {
-    margin-top: 1vh;
-}
-
-.right {
-    background-color: greenyellow;
-}
-
-.error {
-    background-color: indianred;
-}
-
-.result {
-    background-color: rgb(140, 200, 250);
-}
-
-input[type=radio] {
-    margin-left: 1vw;
-    margin-right: .3vw;
-}
-
 .submit {
     margin-top: 4vh;
     width: 5vw;
@@ -114,21 +85,6 @@ input[type=radio] {
     justify-content: center;
     background-color: rgb(177, 179, 180);
     border-radius: 8%;
-}
-
-.radio {
-    width: 100%;
-    margin: 1vh;
-    padding-left: 1vw;
-}
-
-.radio:hover {
-    background-color: rgb(109, 179, 251);
-}
-
-label {
-    height: 100%;
-    width: 100%;
 }
 
 .timer {
