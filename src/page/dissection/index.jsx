@@ -7,7 +7,6 @@ import './index.css'
 
 
 export default function Dissection() {
-    console.log(test)
     const location = useLocation()
     const comment = location.pathname[location.pathname.length - 1]
     return (

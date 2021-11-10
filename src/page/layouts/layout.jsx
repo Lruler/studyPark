@@ -6,6 +6,7 @@ import Quiz from '../quiz'
 import Teach from '../teach' 
     
 export default function Layouts() {
+    
     return (
         <div>
             <Layout>
