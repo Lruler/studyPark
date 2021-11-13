@@ -1,12 +1,39 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useLocation } from 'react-router'
 import { Avatar } from 'antd'
 import { UserOutlined } from '@ant-design/icons'
 import './index.css'
 import Questions from '../../components/question'
+import { LikeTwoTone, DislikeTwoTone } from '@ant-design/icons'
 
 
 export default function Dissection(props) {
+    const [like, setLike] = useState(Array(2).fill(false))
+    const [disLike, setDisLike] = useState(Array(2).fill(false))
+    const handleLike = (key) => {
+        let newLike = like.map((like, index) => {
+            if (index === key) return !like
+            else return like
+        })
+        let newDisLike = disLike[key] ? disLike.map((dislike, index) => {
+            if (index === key) return false
+            else return dislike
+        }) : disLike
+        setLike(newLike)
+        setDisLike(newDisLike)
+    }
+    const handleDisLike = (key) => {
+        let newDisLike = disLike.map((dislike, index) => {
+            if (index === key) return !dislike
+            else return dislike
+        })
+        let newLike = like[key] ? like.map((like, index) => {
+            if (index === key) return false
+            else return like
+        }) : like
+        setDisLike(newDisLike)
+        setLike(newLike)
+    }
     const newTest = props.test.filter((_, index) => {
         return index === 3 || index === 7
     })
@@ -36,6 +63,18 @@ export default function Dissection(props) {
                                             <b>用户名xxxxxx:</b>
                                             <br />
                                             回复内容xxxxx
+                                            <div className="interaction">
+                                                <LikeTwoTone
+                                                    onClick={() => handleLike(index)}
+                                                    className='likeicon'
+                                                    twoToneColor={like[index] ? 'red' : 'gray'}
+                                                />
+                                                <DislikeTwoTone
+                                                    onClick={() => handleDisLike(index)}
+                                                    className='likeicon'
+                                                    twoToneColor={disLike[index] ? 'black' : 'gray'}
+                                                />
+                                            </div>
                                         </div>
                                     </div>
                                     <div className="hr"></div>
