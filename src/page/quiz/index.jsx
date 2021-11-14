@@ -44,8 +44,8 @@ export default function Quiz(props) {
     setClause(!clause)
   }
   const handleToSubmit = () => {
-    handleSubmit()
     setTime(false)
+    handleSubmit(count)
   }
   let format = count.sec < 10 ? '0' + count.sec : count.sec
   return (

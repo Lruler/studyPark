@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useLocation } from 'react-router'
 import { Avatar } from 'antd'
 import { UserOutlined } from '@ant-design/icons'
 import './index.css'
 import Questions from '../../components/question'
 import { LikeTwoTone, DislikeTwoTone } from '@ant-design/icons'
+import Service from '../../common/service'
 
 
 export default function Dissection(props) {
@@ -39,6 +40,15 @@ export default function Dissection(props) {
     })
     const location = useLocation()
     const comment = location.pathname[location.pathname.length - 1]
+    useEffect(() => {   
+        let postRlt = props.result.map((rlt) => {
+            if (rlt === true) return '1'
+            else return '0'
+        })
+        Service.message(postRlt, props.group_id).then((res) => {
+            console.log(res)
+        })
+    }, [])
     return (
         <>
             {

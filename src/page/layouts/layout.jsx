@@ -1,10 +1,11 @@
-import React, {useState} from 'react'
-import { Route, Routes } from 'react-router'
+import React, {useState, useEffect} from 'react'
+import { Route, Routes, useLocation } from 'react-router'
 import PubSub from 'pubsub-js'
 import Layout from './index'
 import Dissection from '../dissection'
 import Quiz from '../quiz'
 import Teach from '../teach' 
+import Service from '../../common/service'
     
 
 export const test = [
@@ -59,24 +60,45 @@ export const test = [
         right: 1
     }]
 export default function Layouts() {
+    const location = useLocation()
     const opt = ['A', 'B', 'C', 'D']
     const [answer, setAnswer] = useState(Array(10).fill(0))
     const [result, setResult] = useState([])
+    const [info, setInfo] = useState({ tel: '', user_name: '', group_id: 0 })
+    let point = 0
+    useEffect(() => {
+        setInfo((preInfo) => {
+            return {
+                ...preInfo,
+                tel: location.state.number,
+                user_name: location.state.userName,
+                group_id: +location.state.group
+            }
+        })
+    }, [])
     const handleAnswer = (e) => {
         let newAnswer = answer
         newAnswer[+e.target.value[0]] = e.target.value
         setAnswer(newAnswer)
     }
-    const handleSubmit = () => {
+    const handleSubmit = (time) => {
         if (answer.includes(0)) {
             alert('请完成所有题目！')
             return
         }
+        let timeStr = `${29 - time.min}分钟${60 - time.sec}秒`
         let tResult = []
         for (let i = 0; i < 10; i++) {
             +answer[i][1] === test[i].right ? tResult.push(true) : tResult.push(false)
         }
         setResult(tResult)
+        tResult.forEach(rlt => {
+            if (rlt === true) point += 10
+        });
+        let postInfo = {...info, time: timeStr, point: point}
+        Service.info(postInfo).then((res) => {
+            alert(`提交成功！你的得分是${res.data.point}`)
+        })
         PubSub.publish('msg', 4)
         window.scrollTo({
             left: 0,
@@ -98,6 +120,7 @@ export default function Layouts() {
                         test={test} />} />
                     <Route path='dissection/:count' element={<Dissection
                         opt={opt}
+                        group_id={info.group_id}
                         answer={answer}
                         result={result}
                         handleAnswer={handleAnswer}
