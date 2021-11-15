@@ -19,22 +19,25 @@ function Fetch(url, opt = {}) {
     if (opt.formdata) {
         opt.body = opt.formdata;
     }
+    console.log(opt)
     return fetch(url, opt)
         .then(response => {
             if (response.ok) {
                 return response.json().then(res => {
+                    console.log(res)
                     return res;
                 });
             } else {
                 return response.json().then(res => {
                     return new Promise((_, reject) => {
+                        console.log(res)
                         reject(res);
                     });
                 });
             }
         })
         .catch(e => {
-            alert(`服务端错误：${e.message}`)
+            console.log(`服务端错误：${e.message}`)
             throw e;
         })
 }
