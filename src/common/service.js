@@ -1,6 +1,6 @@
 import 'whatwg-fetch';
 
-const BASE = ""
+const BASE = "/api"
 
 function Fetch(url, opt = {}) {
     opt.method = opt.method || 'GET';
