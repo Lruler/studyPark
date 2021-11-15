@@ -8,10 +8,10 @@ function Fetch(url, opt = {}) {
         Accept: 'application/json',
         'Content-Type': 'application/json',
     };
-    if (url.includes('message')) {
-        opt.headers = new Headers()
-        opt.headers.append("Content-Type", "application/x-www-form-urlencoded");
-    }
+    // if (url.includes('message')) {
+    //     opt.headers = new Headers()
+    //     opt.headers.append("Content-Type", "application/x-www-form-urlencoded");
+    // }
     if (opt.body) {
         opt.body = JSON.stringify(opt.body)
     }
@@ -62,15 +62,19 @@ let Service = {
     },
     // 获得讨论信息
     message(result, group_id) {
-        let urlencoded = new URLSearchParams(BASE)
-        for (let i = 0; i < result.length; i++) {
-            urlencoded.append("result", result[i])
-        }
-        urlencoded.append("group_id", `${group_id}`)
-        let urlStr = urlencoded.toString()
+        // let postResult = JSON.stringify(result)
+        // let urlencoded = new URLSearchParams(BASE)
+        // for (let i = 0; i < result.length; i++) {
+        //     urlencoded.append("result", result[i])
+        // }
+        // urlencoded.append("group_id", `${group_id}`)
+        // let urlStr = urlencoded.toString()
         return Fetch(BASE + '/message', {
             method: 'POST',
-            data: urlStr
+            data: {
+                result: result,
+                group_id: `${group_id}`
+            }
         })
     }
 };

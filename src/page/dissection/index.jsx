@@ -50,8 +50,8 @@ export default function Dissection(props) {
         if (comment === '4') {
             props.handleReply()
             let postRlt = props.result.map((rlt) => {
-                if (rlt === true) return '1'
-                else return '0'
+                if (rlt === true) return 1
+                else return 0
             })
             Service.message(postRlt, props.group_id).then((res) => {
                 setReply(res.data)
