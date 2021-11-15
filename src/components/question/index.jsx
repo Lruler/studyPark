@@ -12,9 +12,17 @@ export default function Questions(props) {
                             <div className="question">{e.question}</div>
                             <div className="answer">
                                 {e.answer.map((a, as) => {
-                                    const n = index + '' + as
-                                    const res = answer[index] === n && result.length === 10 ?
-                                        result[index] === true ? 'right' : 'error' : ''
+                                    let n 
+                                    let res
+                                    if (answer.length === 10) {
+                                        n = index + '' + as
+                                        res = answer[index] === n && result.length === 10 ?
+                                            result[index] === true ? 'right' : 'error' : ''
+                                    }
+                                    else {
+                                        n = index + '' + as
+                                        res = +answer[0][1] === as ? result[+answer[0][0]] ? 'right' : 'error' : ''
+                                    }
                                     return (
                                         <label key={n} htmlFor={n}>
                                             <div className={'radio ' + res} style={{
@@ -33,7 +41,7 @@ export default function Questions(props) {
                                 })}
                                 {
                                     result.length === 10 ? <div className="result">
-                                        本道题的正确答案是{opt[e.right]}，您的答案是{opt[+answer[index][1]]}，{result[index] ? '恭喜您！答对了' : '很遗憾，仔细一点没准就能对哦'}
+                                        本道题的正确答案是{opt[e.right]}，您的答案是{opt[+answer[index][1]]}
                                     </div> : null
                                 }
                             </div>

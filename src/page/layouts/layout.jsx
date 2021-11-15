@@ -75,6 +75,7 @@ export default function Layouts() {
                 group_id: +location.state.group
             }
         })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     const handleAnswer = (e) => {
         let newAnswer = answer

@@ -15,7 +15,7 @@ export default function Landing() {
     setNumber(e.target.value)
   }
   const handleEntring = () => {
-    if (group === '') alert('请输入组别！')
+    if (typeof +group !== 'number' || +group < 1 || +group > 4) alert('请输入正确的组别！') //应该写正则来着
     else if (group !== '' && number === '') alert('请输入联系方式！')
     else {
       navigate('/layout', {replace: true, state: {group, number, userName}})
@@ -33,7 +33,7 @@ export default function Landing() {
         <h1>欢迎来到乐学中心</h1>
         <b>这是一个线上学习互助交流平台， 祝您学习愉快！</b>
         <br />
-        <b>您的用户名为: 用户:{userName}</b>
+        <b>您的用户名为: 用户{userName}</b>
         <div className="entring-input">
           <label htmlFor="group">
             请填写你所属的学习组: <input onChange={handleGroup} value={group} type="text" />

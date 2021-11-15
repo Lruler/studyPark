@@ -7,7 +7,13 @@
 .comment {
     padding:2vh 2vw;
     width: 80%;
-    background-color: rgb(240, 240, 240);
+}
+
+.message {
+    background-color: rgb(255, 255, 255);
+    border: chocolate 1px solid;
+    margin: 8vh 0;
+    padding: 20px;
 }
 
 .hr {
@@ -40,4 +46,8 @@
 
 .likeicon {
     cursor: pointer;
+}
+
+.detail {
+    margin-left: 3vw;
 }

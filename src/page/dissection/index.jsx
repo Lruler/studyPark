@@ -9,8 +9,10 @@ import Service from '../../common/service'
 
 
 export default function Dissection(props) {
-    const [like, setLike] = useState(Array(2).fill(false))
-    const [disLike, setDisLike] = useState(Array(2).fill(false))
+    const [like, setLike] = useState(Array(4).fill(false))
+    const [disLike, setDisLike] = useState(Array(4).fill(false))
+    const [reply, setReply] = useState({})
+    let qesNum = Object.keys(reply)
     const handleLike = (key) => {
         let newLike = like.map((like, index) => {
             if (index === key) return !like
@@ -36,18 +38,22 @@ export default function Dissection(props) {
         setLike(newLike)
     }
     const newTest = props.test.filter((_, index) => {
-        return index === 3 || index === 7
+        return qesNum.includes(`${index + 1}`)
+    })
+    const newAnswer = props.answer.filter((_, index) => {
+        return qesNum.includes(`${index + 1}`)
     })
     const location = useLocation()
     const comment = location.pathname[location.pathname.length - 1]
-    useEffect(() => {   
+    useEffect(() => {  
         let postRlt = props.result.map((rlt) => {
             if (rlt === true) return '1'
             else return '0'
         })
         Service.message(postRlt, props.group_id).then((res) => {
-            console.log(res)
+            setReply(res.data)
         })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     return (
         <>
@@ -55,14 +61,21 @@ export default function Dissection(props) {
                 comment === '4' ?
                 <div className='body'>
                     {
-                        newTest.map((_, index) => {
+                            newTest.map((_, index) => {
+                            let user = Math.random().toString().slice(-6)
                             let replyTest = []
+                            let replyAnswer = []
+                            replyAnswer.push(newAnswer[index])
                             replyTest.push(newTest[index])
+                            let replyComment = []
+                            for (const ques in reply) {
+                                replyComment.push({ques: reply[ques]})
+                            }
                             return (
-                                <div key={index}>
+                                <div className='message' key={index}>
                                     <div className="comment">
                                         <div className="question">
-                                            <Questions {...props} test={replyTest} />
+                                            <Questions {...props} answer={replyAnswer} test={replyTest} />
                                         </div>
                                     </div>
                                     <div className="reply">
@@ -70,9 +83,11 @@ export default function Dissection(props) {
                                         <div className="hr"></div>
                                         <div className="reply-detail">
                                             <Avatar shape="circle" icon={<UserOutlined />} />
-                                            <b>用户名xxxxxx:</b>
+                                            <b>用户名{user}:</b>
                                             <br />
-                                            回复内容xxxxx
+                                            <div className="detail">
+                                                {replyComment[index].ques}
+                                            </div>
                                             <div className="interaction">
                                                 <LikeTwoTone
                                                     onClick={() => handleLike(index)}

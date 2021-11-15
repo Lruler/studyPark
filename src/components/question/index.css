@@ -11,15 +11,17 @@
 }
 
 .right {
-    background-color: greenyellow;
+    background-color: rgb(235, 235, 235);
+    color: rgb(8, 117, 31);
 }
 
 .error {
-    background-color: indianred;
+    background-color: rgb(235, 235, 235);
+    color: indianred;
 }
 
 .result {
-    background-color: rgb(140, 200, 250);
+    background-color: rgb(235, 235, 235);
 }
 
 input[type=radio] {
