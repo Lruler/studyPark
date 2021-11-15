@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react'
 import { useLocation } from 'react-router'
 import { Avatar } from 'antd'
@@ -45,70 +46,72 @@ export default function Dissection(props) {
     })
     const location = useLocation()
     const comment = location.pathname[location.pathname.length - 1]
-    useEffect(() => {  
-        let postRlt = props.result.map((rlt) => {
-            if (rlt === true) return '1'
-            else return '0'
-        })
-        Service.message(postRlt, props.group_id).then((res) => {
-            setReply(res.data)
-        })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    useEffect(() => {
+        if (comment === '4') {
+            props.handleReply()
+            let postRlt = props.result.map((rlt) => {
+                if (rlt === true) return '1'
+                else return '0'
+            })
+            Service.message(postRlt, props.group_id).then((res) => {
+                setReply(res.data)
+            })
+        }
     }, [])
     return (
         <>
             {
-                comment === '4' ?
-                <div className='body'>
+                props.isReply ?
+                    <div className='body'>
                     {
-                            newTest.map((_, index) => {
-                            let user = Math.random().toString().slice(-6)
-                            let replyTest = []
-                            let replyAnswer = []
-                            replyAnswer.push(newAnswer[index])
-                            replyTest.push(newTest[index])
-                            let replyComment = []
-                            for (const ques in reply) {
-                                replyComment.push({ques: reply[ques]})
-                            }
-                            return (
-                                <div className='message' key={index}>
-                                    <div className="comment">
-                                        <div className="question">
-                                            <Questions {...props} answer={replyAnswer} test={replyTest} />
-                                        </div>
+                        newTest.map((_, index) => {
+                        let user = Math.random().toString().slice(-6)
+                        let replyTest = []
+                        let replyAnswer = []
+                        replyAnswer.push(newAnswer[index])
+                        replyTest.push(newTest[index])
+                        let replyComment = []
+                        for (const ques in reply) {
+                            replyComment.push({ques: reply[ques]})
+                        }
+                        return (
+                            <div className='message' key={index}>
+                                <div className="comment">
+                                    <div className="question">
+                                        <Questions {...props} answer={replyAnswer} test={replyTest} />
                                     </div>
-                                    <div className="reply">
-                                        <b>共 1 条回复：</b>
-                                        <div className="hr"></div>
-                                        <div className="reply-detail">
-                                            <Avatar shape="circle" icon={<UserOutlined />} />
-                                            <b>用户名{user}:</b>
-                                            <br />
-                                            <div className="detail">
-                                                {replyComment[index].ques}
-                                            </div>
-                                            <div className="interaction">
-                                                <LikeTwoTone
-                                                    onClick={() => handleLike(index)}
-                                                    className='likeicon'
-                                                    twoToneColor={like[index] ? 'red' : 'gray'}
-                                                />
-                                                <DislikeTwoTone
-                                                    onClick={() => handleDisLike(index)}
-                                                    className='likeicon'
-                                                    twoToneColor={disLike[index] ? 'black' : 'gray'}
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="hr"></div>
                                 </div>
+                                <div className="reply">
+                                    <b>共 1 条回复：</b>
+                                    <div className="hr"></div>
+                                    <div className="reply-detail">
+                                        <Avatar shape="circle" icon={<UserOutlined />} />
+                                        <b>用户名{user}:</b>
+                                        <br />
+                                        <div className="detail">
+                                            {replyComment[index].ques}
+                                        </div>
+                                        <div className="interaction">
+                                            <LikeTwoTone
+                                                onClick={() => handleLike(index)}
+                                                className='likeicon'
+                                                twoToneColor={like[index] ? 'red' : 'gray'}
+                                            />
+                                            <DislikeTwoTone
+                                                onClick={() => handleDisLike(index)}
+                                                className='likeicon'
+                                                twoToneColor={disLike[index] ? 'black' : 'gray'}
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="hr"></div>
+                            </div>
                             )
                         })
                     }
                 </div> :
-                <div>
+                    <div>
                     别心急～暂时还没人回复你哦
                 </div>
             }

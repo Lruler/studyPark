@@ -3,8 +3,7 @@ import './index.css'
 import Questions from '../../components/question'
 
 export default function Quiz(props) {
-  const {result ,handleSubmit} = props
-  const [start, setStart] = useState(false)
+  const {result, handleSubmit, start} = props
   const [clause, setClause] = useState(false)
   const [count, setCount] = useState({ min: 29, sec: 59 })
   const [time, setTime] = useState(true)
@@ -37,7 +36,7 @@ export default function Quiz(props) {
   }, [count, result.length, start, time])
   const handleStart = () => {
     if (clause) {
-      setStart(true)
+      props.handleStart()
     }
   }
   const handleClause = () => {

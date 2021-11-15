@@ -65,6 +65,8 @@ export default function Layouts() {
     const [answer, setAnswer] = useState(Array(10).fill(0))
     const [result, setResult] = useState([])
     const [info, setInfo] = useState({ tel: '', user_name: '', group_id: 0 })
+    const [start, setStart] = useState(false)
+    const [isReply, setIsReply] = useState(false)
     let point = 0
     useEffect(() => {
         setInfo((preInfo) => {
@@ -107,6 +109,12 @@ export default function Layouts() {
             behavior: 'smooth'
         })
     }
+    const handleStart = () => {
+        setStart(true)
+    }
+    const handleReply = () => {
+        setIsReply(true)
+    }
     return (
         <div>
             <Layout>
@@ -118,14 +126,18 @@ export default function Layouts() {
                         result={result}
                         handleAnswer={handleAnswer}
                         handleSubmit={handleSubmit}
+                        handleStart={handleStart}
+                        start={start}
                         test={test} />} />
                     <Route path='dissection/:count' element={<Dissection
                         opt={opt}
                         group_id={info.group_id}
                         answer={answer}
                         result={result}
+                        isReply={isReply}
                         handleAnswer={handleAnswer}
                         handleSubmit={handleSubmit}
+                        handleReply={handleReply}
                         test={test}  />} />
                 </Routes>
             </Layout>
