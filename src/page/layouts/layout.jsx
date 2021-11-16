@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { Route, Routes, useLocation } from 'react-router'
+import { Navigate, Route, Routes, useLocation } from 'react-router'
 import PubSub from 'pubsub-js'
 import Layout from './index'
 import Dissection from '../dissection'
@@ -119,7 +119,7 @@ export default function Layouts() {
         <div>
             <Layout>
                 <Routes>
-                    <Route path='/' element={<Teach />} />
+                    <Route path='home' element={<Teach />} />
                     <Route path='quiz' element={<Quiz
                         opt={opt}
                         answer={answer}
@@ -138,8 +138,9 @@ export default function Layouts() {
                         handleAnswer={handleAnswer}
                         handleSubmit={handleSubmit}
                         handleReply={handleReply}
-                        test={test}  />} />
+                        test={test} />} />
                 </Routes>
+                <Navigate to='home' />
             </Layout>
         </div>
     )
