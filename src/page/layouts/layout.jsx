@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import { Navigate, Route, Routes, useLocation } from 'react-router'
-import PubSub from 'pubsub-js'
 import Layout from './index'
 import Dissection from '../dissection'
 import Quiz from '../quiz'
@@ -67,6 +66,7 @@ export default function Layouts() {
     const [info, setInfo] = useState({ tel: '', user_name: '', group_id: 0 })
     const [start, setStart] = useState(false)
     const [isReply, setIsReply] = useState(false)
+    const [count, setCount] = useState(0)
     let point = 0
     useEffect(() => {
         setInfo((preInfo) => {
@@ -102,7 +102,9 @@ export default function Layouts() {
         Service.info(postInfo).then((res) => {
             alert(`提交成功！你的得分是${res.data.point}`)
         })
-        PubSub.publish('msg', 4)
+        setTimeout(() => {
+            setCount(4)
+        }, 180000)
         window.scrollTo({
             left: 0,
             top: 0,
@@ -117,7 +119,7 @@ export default function Layouts() {
     }
     return (
         <div>
-            <Layout>
+            <Layout count={count}>
                 <Routes>
                     <Route path='home' element={<Teach />} />
                     <Route path='quiz' element={<Quiz
@@ -135,12 +137,13 @@ export default function Layouts() {
                         answer={answer}
                         result={result}
                         isReply={isReply}
+                        count = {count}
                         handleAnswer={handleAnswer}
                         handleSubmit={handleSubmit}
                         handleReply={handleReply}
                         test={test} />} />
+                    <Route path='*' element={<Navigate to='home' />} />
                 </Routes>
-                <Navigate to='home' />
             </Layout>
         </div>
     )

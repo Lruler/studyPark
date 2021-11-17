@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import PubSub from 'pubsub-js'
 import { Layout, Menu, Avatar, Badge } from 'antd'
 import { useNavigate, useLocation } from 'react-router'
 import './index.css'
@@ -8,9 +7,10 @@ import { DesktopOutlined, PieChartOutlined, UserOutlined } from '@ant-design/ico
 const { Header, Content, Sider } = Layout
 
 const Layouts = (props) => {
+    const { count } = props
+    const [isShow, setIsShow] = useState(false)
     const navigate = useNavigate()
     const location = useLocation()
-    const [count, setCount] = useState(0)
     const handleTo = (url) => {
         switch (url) {
             case 1:
@@ -26,18 +26,13 @@ const Layouts = (props) => {
     }
     const { children } = props
     useEffect(() => {
-        let token = PubSub.subscribe('msg', (_, data) => {
-            setTimeout(() => {
-                setCount(data)
-            }, 2000)
-        })
-        return () => {
-            PubSub.unsubscribe(token)
+        if (count === 4) {
+           setIsShow(true)
         }
-    }, [])
+    }, [count])
     useEffect(() => {
         if (location.pathname.includes('/layout/dissection')) {
-            setCount(0)
+            setIsShow(false)
         }
     }, [location])
     return (
@@ -58,9 +53,9 @@ const Layouts = (props) => {
                     </Menu.Item>
                     <Menu.Item className='diss' key="diss" onClick={() => handleTo(3)} icon={<UserOutlined />}>
                         {
-                            count === 4 ?
+                            isShow  ?
                                 <div className="msg">
-                                    {count}
+                                    { count }
                                 </div> : null
                         }
                         讨论

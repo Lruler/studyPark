@@ -13,6 +13,7 @@ export default function Dissection(props) {
     const [like, setLike] = useState(Array(4).fill(false))
     const [disLike, setDisLike] = useState(Array(4).fill(false))
     const [reply, setReply] = useState({})
+    const [user] = useState(Array(4).fill(Math.random().toString().slice(-6)))
     let qesNum = Object.keys(reply)
     const handleLike = (key) => {
         let newLike = like.map((like, index) => {
@@ -65,7 +66,6 @@ export default function Dissection(props) {
                     <div className='body'>
                     {
                         newTest.map((_, index) => {
-                        let user = Math.random().toString().slice(-6)
                         let replyTest = []
                         let replyAnswer = []
                         replyAnswer.push(newAnswer[index])
@@ -86,7 +86,7 @@ export default function Dissection(props) {
                                     <div className="hr"></div>
                                     <div className="reply-detail">
                                         <Avatar shape="circle" icon={<UserOutlined />} />
-                                        <b>用户名{user}:</b>
+                                        <b>用户名{user[index]}:</b>
                                         <br />
                                         <div className="detail">
                                             {replyComment[index].ques}
