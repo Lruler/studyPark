@@ -67,6 +67,7 @@ export default function Layouts() {
     const [start, setStart] = useState(false)
     const [isReply, setIsReply] = useState(false)
     const [count, setCount] = useState(0)
+    const [time, setTime] = useState(true)
     let point = 0
     useEffect(() => {
         setInfo((preInfo) => {
@@ -117,6 +118,9 @@ export default function Layouts() {
     const handleReply = () => {
         setIsReply(true)
     }
+    const handleTime = () => {
+        setTime(false)
+    }
     return (
         <div>
             <Layout count={count}>
@@ -126,6 +130,8 @@ export default function Layouts() {
                         opt={opt}
                         answer={answer}
                         result={result}
+                        time={time}
+                        handleTime={handleTime}
                         handleAnswer={handleAnswer}
                         handleSubmit={handleSubmit}
                         handleStart={handleStart}

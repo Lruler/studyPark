@@ -3,10 +3,9 @@ import './index.css'
 import Questions from '../../components/question'
 
 export default function Quiz(props) {
-  const {result, handleSubmit, start} = props
+  const {result, handleSubmit, start, time, handleTime} = props
   const [clause, setClause] = useState(false)
   const [count, setCount] = useState({ min: 29, sec: 59 })
-  const [time, setTime] = useState(true)
   useEffect(() => {
     const newTimer = setTimeout(() => {
       if (start && time) {
@@ -43,7 +42,7 @@ export default function Quiz(props) {
     setClause(!clause)
   }
   const handleToSubmit = () => {
-    setTime(false)
+    handleTime()
     handleSubmit(count)
   }
   let format = count.sec < 10 ? '0' + count.sec : count.sec
