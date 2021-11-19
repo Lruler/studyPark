@@ -108,7 +108,7 @@ export default function Layouts() {
         })
         setTimeout(() => {
             setCount(4)
-        }, 3000)
+        }, 180000)
         window.scrollTo({
             left: 0,
             top: 0,
