@@ -1,19 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useLocation } from 'react-router'
 import { Avatar } from 'antd'
 import { UserOutlined } from '@ant-design/icons'
 import './index.css'
 import Questions from '../../components/question'
 import { LikeTwoTone, DislikeTwoTone } from '@ant-design/icons'
-import Service from '../../common/service'
 
 
 export default function Dissection(props) {
+    const { user, reply, getReply } = props
     const [like, setLike] = useState(Array(4).fill(false))
     const [disLike, setDisLike] = useState(Array(4).fill(false))
-    const [reply, setReply] = useState({})
-    const [user] = useState(Array(4).fill(Math.random().toString().slice(-6)))
+
     let qesNum = Object.keys(reply)
     const handleLike = (key) => {
         let newLike = like.map((like, index) => {
@@ -47,18 +46,9 @@ export default function Dissection(props) {
     })
     const location = useLocation()
     const comment = location.pathname[location.pathname.length - 1]
-    useEffect(() => {
-        if (comment === '4') {
-            props.handleReply()
-            let postRlt = props.result.map((rlt) => {
-                if (rlt === true) return 1
-                else return 0
-            })
-            Service.message(postRlt, props.group_id).then((res) => {
-                setReply(res.data)
-            })
-        }
-    }, [])
+    if (comment === '4' && getReply) {
+        props.handleReply()
+    }
     return (
         <>
             {

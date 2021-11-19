@@ -68,6 +68,9 @@ export default function Layouts() {
     const [isReply, setIsReply] = useState(false)
     const [count, setCount] = useState(0)
     const [time, setTime] = useState(true)
+    const [user] = useState([Math.random().toString().slice(-6), Math.random().toString().slice(-6), Math.random().toString().slice(-6), Math.random().toString().slice(-6)])
+    const [reply, setReply] = useState({})
+    const [getReply, setGetReply] = useState(true)
     let point = 0
     useEffect(() => {
         setInfo((preInfo) => {
@@ -105,7 +108,7 @@ export default function Layouts() {
         })
         setTimeout(() => {
             setCount(4)
-        }, 180000)
+        }, 3000)
         window.scrollTo({
             left: 0,
             top: 0,
@@ -117,6 +120,14 @@ export default function Layouts() {
     }
     const handleReply = () => {
         setIsReply(true)
+        let postRlt = result.map((rlt) => {
+            if (rlt === true) return 1
+            else return 0
+        })
+        Service.message(postRlt, info.group_id).then((res) => {
+            setReply(res.data)
+        })
+        setGetReply(false)
     }
     const handleTime = () => {
         setTime(false)
@@ -143,7 +154,10 @@ export default function Layouts() {
                         answer={answer}
                         result={result}
                         isReply={isReply}
-                        count = {count}
+                        count={count}
+                        user={user}
+                        reply={reply}
+                        getReply={getReply}
                         handleAnswer={handleAnswer}
                         handleSubmit={handleSubmit}
                         handleReply={handleReply}
