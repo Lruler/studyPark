@@ -27,29 +27,36 @@ export default function Landing() {
     })
   }, [])
   return (
+    <>
     <div className='bcimg'>
-      <div className="entring"></div>
+      {/* <div className="entring"></div> */}
       <div className="entring-msg">
-        <h1>欢迎来到乐学中心</h1>
+        <div className='title'>欢迎来到乐学中心</div>
         <b>这是一个线上学习互助交流平台， 祝您学习愉快！</b>
         <br />
-        <b>您的用户名为: 用户{userName}</b>
-        <div className="entring-input">
+          <div className="entring-input">
+            <label htmlFor="user">
+              <span className='la-span'>您的用户名为:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <input onChange={handleGroup} value={`用户${userName}`} type="text" readOnly />
+            </label>
           <label htmlFor="group">
-            请填写你所属的学习组: <input onChange={handleGroup} value={group} type="text" />
+              <span className='la-span'>请填写你所属的学习组:</span>
+              <input onChange={handleGroup} value={group} type="text" />
           </label>
           <label htmlFor="number">
-            请填写您的联系方式: <input onChange={handleNumber} value={number} type="text" />
+              <span className='la-span'>请填写您的联系方式:&nbsp;&nbsp;&nbsp;</span>
+              <input onChange={handleNumber} value={number} type="text" />
           </label>
         </div>
-        <div className="tip">
-          <p>【联系方式仅用于发放被试费，请优先填写与支付宝绑定的电话号码，若未绑定支付宝,</p>
-          <p>则填写QQ号/微信号/电话号码/其他联系方式，填写格式为:支付宝xxxxxxx】</p>
-        </div>
         <div onClick={handleEntring} className="entring-button">
-            进入
+          进入
+        </div>
+        </div>
+        <div className="tip">
+          <p>【联系方式仅用于发放被试费，请优先填写与支付宝绑定的电话号码，
+            若未绑定支付宝,则填写QQ号/微信号/电话号码/其他联系方式，填写格式为:支付宝xxxxxxx】</p>
         </div>
       </div>
-    </div>
+    </>
   )
 }

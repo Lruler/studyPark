@@ -1,3 +1,11 @@
+@font-face {
+    font-family: "ChaoZiSheFengYunJian-2";
+    src: url('./font/ChaoZiSheFengYunJian-2.ttf');
+    font-style: normal;
+    font-weight: normal;
+}
+
+
 .bcimg {
     position: relative;
     height: 100vh;
@@ -7,16 +15,17 @@
     background-size: cover;
 }
 
-.entring {
+/* .entring {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     height: 60%;
     width: 60%;
-}
+} */
 
 .entring-msg {
+    font-family: "黑体";
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -24,21 +33,62 @@
     justify-content: space-evenly;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -70%);
     height: 40%;
-    width: 60%;
+    width: 100%;
     z-index: 10;
+    font-size: 20px;
+}
+
+.title {
+    font-family: "ChaoZiSheFengYunJian-2";
+    font-size: 80px;
+}
+
+.entring-input {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    align-items: center;
+}
+
+label {
+    margin-top: 2vh;
+    display: flex;
+    width: 40%;
+}
+
+label input {
+    border-radius: 5px;
+    width: auto;
 }
 
 .entring-button {
-    color: black;
-    background-color: wheat;
+    color: white;
+    background-color: rgb(2, 132, 238);
     cursor: pointer;
     text-align: center;
     width: 5%;
     border-radius: 10%;
+    margin-top: 5vh;
 }
 
 .entring-button:hover {
-    background-color: rgb(240, 183, 78);
+    background-color: rgb(1, 202, 252);
+}
+
+.tip {
+    font-size: 16px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.la-span {
+    background-color: rgb(2, 132, 238);
+    height: 40px;
+    padding: 0 10px;
+    line-height: 40px;
+    border-radius: 5px;
 }
