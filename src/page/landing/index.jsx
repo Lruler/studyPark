@@ -36,7 +36,7 @@ export default function Landing() {
         <br />
           <div className="entring-input">
             <label htmlFor="user">
-              <span className='la-span'>您的用户名为:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span className='la-span'>您的用户名为:</span>
               <input onChange={handleGroup} value={`用户${userName}`} type="text" readOnly />
             </label>
           <label htmlFor="group">
@@ -44,13 +44,13 @@ export default function Landing() {
               <input onChange={handleGroup} value={group} type="text" />
           </label>
           <label htmlFor="number">
-              <span className='la-span'>请填写您的联系方式:&nbsp;&nbsp;&nbsp;</span>
+              <span className='la-span'>请填写您的联系方式:</span>
               <input onChange={handleNumber} value={number} type="text" />
           </label>
         </div>
+        </div>
         <div onClick={handleEntring} className="entring-button">
           进入
-        </div>
         </div>
         <div className="tip">
           <p>【联系方式仅用于发放被试费，请优先填写与支付宝绑定的电话号码，

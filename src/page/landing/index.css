@@ -26,6 +26,7 @@
 
 .entring-msg {
     font-family: "黑体";
+    color: white;
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -41,6 +42,7 @@
 }
 
 .title {
+    color: white;
     font-family: "ChaoZiSheFengYunJian-2";
     font-size: 80px;
 }
@@ -55,26 +57,36 @@
 label {
     margin-top: 2vh;
     display: flex;
-    width: 40%;
+    width: 60%;
 }
 
 label input {
     border-radius: 5px;
     width: auto;
+    border: 0;
+    width: 67%;
+    color: #000;
 }
 
 .entring-button {
+    position: absolute;
     color: white;
-    background-color: rgb(2, 132, 238);
+    background-color: #2140E3;
     cursor: pointer;
     text-align: center;
-    width: 5%;
-    border-radius: 10%;
-    margin-top: 5vh;
+    width: 10%;
+    border-radius: 20%;
+    bottom: 10vh;
+    height: 8vh;
+    left: 50%;
+    line-height: 8vh;
+    text-align: center;
+    font-size: 20px;
+    transform: translateX(-50%);
 }
 
 .entring-button:hover {
-    background-color: rgb(1, 202, 252);
+    background-color: rgb(1, 131, 252);
 }
 
 .tip {
@@ -86,9 +98,12 @@ label input {
 }
 
 .la-span {
-    background-color: rgb(2, 132, 238);
+    color: white;
+    background-color: #2140E3;
     height: 40px;
     padding: 0 10px;
     line-height: 40px;
     border-radius: 5px;
+    width: 33%;
+    text-align: center;
 }
