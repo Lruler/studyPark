@@ -14,6 +14,7 @@
     border: chocolate 1px solid;
     margin: 8vh 0;
     padding: 20px;
+    font-size: 18px;
 }
 
 .hr {
@@ -50,4 +51,22 @@
 
 .detail {
     margin-left: 3vw;
+}
+
+.quizB {
+    margin-top: 2vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2140E3;
+    height: 8vh;
+    width: 15vw;
+    border-radius: 8%;
+    cursor: pointer;
+    color: white;
+    font-size: 18px;
+}
+
+.quizB:hover {
+     background-color: rgb(1, 131, 252);
 }

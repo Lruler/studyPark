@@ -100,6 +100,7 @@ export default function Dissection(props) {
                             )
                         })
                     }
+                     <div className="quizB">跳转问卷B</div>
                 </div> :
                     <div>
                     别心急～暂时还没人回复你哦
