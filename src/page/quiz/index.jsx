@@ -63,7 +63,7 @@ export default function Quiz(props) {
           <div className="start">
             <div className="text">
               <h2>平台测试题</h2>
-              <div className="tip">
+              <div>
                 <p>1.仅可答题一次！请认真仔细阅题！</p>
                 <p>2.测验限时30分钟</p>
                 <p>3.题型为选择题 且都是单选题</p>
@@ -72,7 +72,7 @@ export default function Quiz(props) {
                 <input type="checkbox" name="clause" onChange={handleClause} checked={clause} />
                 依照学术诚信条款，我保证本测验答案是我独立完成的
               </div>
-              <div onClick={handleStart} className={clause ? 'button' : 'forbid'}>
+              <div onClick={handleStart} className={clause ? 'button-quiz' : 'forbid'}>
                 开始测验
               </div>
             </div>

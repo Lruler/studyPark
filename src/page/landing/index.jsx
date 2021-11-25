@@ -35,15 +35,15 @@ export default function Landing() {
         <b>这是一个线上学习互助交流平台， 祝您学习愉快！</b>
         <br />
           <div className="entring-input">
-            <label htmlFor="user">
+            <label className='landinglabel' htmlFor="user">
               <span className='la-span'>您的用户名为:</span>
               <input onChange={handleGroup} value={`用户${userName}`} type="text" readOnly />
             </label>
-          <label htmlFor="group">
+            <label className='landinglabel' htmlFor="group">
               <span className='la-span'>请填写你所属的学习组:</span>
               <input onChange={handleGroup} value={group} type="text" />
           </label>
-          <label htmlFor="number">
+            <label className='landinglabel' htmlFor="number">
               <span className='la-span'>请填写您的联系方式:</span>
               <input onChange={handleNumber} value={number} type="text" />
           </label>

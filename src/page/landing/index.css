@@ -54,13 +54,13 @@
     align-items: center;
 }
 
-label {
+.landinglabel {
     margin-top: 2vh;
     display: flex;
     width: 60%;
 }
 
-label input {
+.landinglabel input {
     border-radius: 5px;
     width: auto;
     border: 0;
