@@ -64,7 +64,7 @@ export default function Quiz(props) {
                 <div className='submit' onClick={handleToSubmit}>
                   提交测试
                 </div> :
-                <div className='submit' onClick={() => navigate('/layout/quizA')}>
+                <div className='submit' onClick={() => navigate('/layout/quizsA')}>
                   跳转问卷A
                 </div>
             }

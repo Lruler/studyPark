@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function index() {
+export default function QuizB() {
     return (
         <div>
             我是B

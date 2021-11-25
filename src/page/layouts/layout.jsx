@@ -6,6 +6,7 @@ import Quiz from '../quiz'
 import Teach from '../teach' 
 import Service from '../../common/service'
 import QuizA from '../quizA'
+import QuizB from '../quizB'
     
 
 export const test = [
@@ -107,9 +108,6 @@ export default function Layouts() {
         Service.info(postInfo).then((res) => {
             alert(`提交成功！你的得分是${res.data.point}`)
         })
-        setTimeout(() => {
-            setCount(4)
-        }, 180000)
         window.scrollTo({
             left: 0,
             top: 0,
@@ -134,13 +132,17 @@ export default function Layouts() {
     const handleTime = () => {
         setTime(false)
     }
+    const handleCount = () => {
+        setCount(4)
+    }
     return (
         <div>
             <Routes>
-                <Route path='quizA' element={<QuizA />} />
+                <Route path='quizsA' element={<QuizA handleCount={handleCount} />} />
+                <Route path='quizsB' element={<QuizB />} />
             </Routes>
             {
-                location.pathname.includes('quizA') ? null :
+                location.pathname.includes('quizs') ? null :
                     <Layout count={count}>
                         <Routes>
                             <Route path='home' element={<Teach />} />

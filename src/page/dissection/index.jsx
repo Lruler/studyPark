@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState } from 'react'
-import { useLocation } from 'react-router'
+import { useLocation, useNavigate } from 'react-router'
 import { Avatar } from 'antd'
 import { UserOutlined } from '@ant-design/icons'
 import './index.css'
@@ -12,6 +12,8 @@ export default function Dissection(props) {
     const { user, reply, getReply } = props
     const [like, setLike] = useState(Array(4).fill(false))
     const [disLike, setDisLike] = useState(Array(4).fill(false))
+
+    const navagate = useNavigate()
 
     let qesNum = Object.keys(reply)
     const handleLike = (key) => {
@@ -100,7 +102,7 @@ export default function Dissection(props) {
                             )
                         })
                     }
-                     <div className="quizB">跳转问卷B</div>
+                     <div className="quizB" onClick={() => navagate('/layout/quizsB')}>跳转问卷B</div>
                 </div> :
                     <div>
                     别心急～暂时还没人回复你哦
