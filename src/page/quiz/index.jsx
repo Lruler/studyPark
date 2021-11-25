@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router'
 import './index.css'
 import Questions from '../../components/question'
 
@@ -6,6 +7,7 @@ export default function Quiz(props) {
   const {result, handleSubmit, start, time, handleTime} = props
   const [clause, setClause] = useState(false)
   const [count, setCount] = useState({ min: 29, sec: 59 })
+  const navigate = useNavigate()
   useEffect(() => {
     const newTimer = setTimeout(() => {
       if (start && time) {
@@ -42,8 +44,9 @@ export default function Quiz(props) {
     setClause(!clause)
   }
   const handleToSubmit = () => {
-    handleTime()
-    handleSubmit(count)
+    let a =  true
+     a = handleSubmit(count)
+    if (a) handleTime()
   }
   let format = count.sec < 10 ? '0' + count.sec : count.sec
   return (
@@ -56,9 +59,16 @@ export default function Quiz(props) {
             </div>
             <b>平台测试题</b>
             <Questions {...props} />
-            <div className={time ? 'submit' : 'no-submit'} onClick={time ? handleToSubmit : null}>
-              提交测试
-            </div>
+            {
+              time ?
+                <div className='submit' onClick={handleToSubmit}>
+                  提交测试
+                </div> :
+                <div className='submit' onClick={() => navigate('/layout/quizA')}>
+                  跳转问卷A
+                </div>
+            }
+
           </div> :
           <div className="start">
             <div className="text">

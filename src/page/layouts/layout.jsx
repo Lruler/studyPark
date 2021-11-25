@@ -5,6 +5,7 @@ import Dissection from '../dissection'
 import Quiz from '../quiz'
 import Teach from '../teach' 
 import Service from '../../common/service'
+import QuizA from '../quizA'
     
 
 export const test = [
@@ -91,7 +92,7 @@ export default function Layouts() {
     const handleSubmit = (time) => {
         if (answer.includes(0)) {
             alert('请完成所有题目！')
-            return
+            return false
         }
         let timeStr = `${29 - time.min}分钟${60 - time.sec}秒`
         let tResult = []
@@ -114,6 +115,7 @@ export default function Layouts() {
             top: 0,
             behavior: 'smooth'
         })
+        return true
     }
     const handleStart = () => {
         setStart(true)
@@ -134,37 +136,43 @@ export default function Layouts() {
     }
     return (
         <div>
-            <Layout count={count}>
-                <Routes>
-                    <Route path='home' element={<Teach />} />
-                    <Route path='quiz' element={<Quiz
-                        opt={opt}
-                        answer={answer}
-                        result={result}
-                        time={time}
-                        handleTime={handleTime}
-                        handleAnswer={handleAnswer}
-                        handleSubmit={handleSubmit}
-                        handleStart={handleStart}
-                        start={start}
-                        test={test} />} />
-                    <Route path='dissection/:count' element={<Dissection
-                        opt={opt}
-                        group_id={info.group_id}
-                        answer={answer}
-                        result={result}
-                        isReply={isReply}
-                        count={count}
-                        user={user}
-                        reply={reply}
-                        getReply={getReply}
-                        handleAnswer={handleAnswer}
-                        handleSubmit={handleSubmit}
-                        handleReply={handleReply}
-                        test={test} />} />
-                    <Route path='*' element={<Navigate to='home' />} />
-                </Routes>
-            </Layout>
+            <Routes>
+                <Route path='quizA' element={<QuizA />} />
+            </Routes>
+            {
+                location.pathname.includes('quizA') ? null :
+                    <Layout count={count}>
+                        <Routes>
+                            <Route path='home' element={<Teach />} />
+                            <Route path='quiz' element={<Quiz
+                                opt={opt}
+                                answer={answer}
+                                result={result}
+                                time={time}
+                                handleTime={handleTime}
+                                handleAnswer={handleAnswer}
+                                handleSubmit={handleSubmit}
+                                handleStart={handleStart}
+                                start={start}
+                                test={test} />} />
+                            <Route path='dissection/:count' element={<Dissection
+                                opt={opt}
+                                group_id={info.group_id}
+                                answer={answer}
+                                result={result}
+                                isReply={isReply}
+                                count={count}
+                                user={user}
+                                reply={reply}
+                                getReply={getReply}
+                                handleAnswer={handleAnswer}
+                                handleSubmit={handleSubmit}
+                                handleReply={handleReply}
+                                test={test} />} />
+                            <Route path='/' element={<Navigate to='home' />} />
+                        </Routes>
+                    </Layout>
+            }
         </div>
     )
 }
