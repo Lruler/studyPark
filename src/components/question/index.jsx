@@ -9,7 +9,7 @@ export default function Questions(props) {
                 test.map((e, index) => {
                     return (
                         <div key={e.question} >
-                            <div className="question">{e.question}</div>
+                            <div className="question"><b>{e.question}</b></div>
                             <div className="answer">
                                 {e.answer.map((a, as) => {
                                     let n 
