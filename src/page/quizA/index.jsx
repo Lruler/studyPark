@@ -5,7 +5,7 @@ import './index.css'
 export default function QuizA(props) {
   const navigate = useNavigate()
   const handleToA = () => {
-    navigate('/layout/quiz')
+    navigate('/layout/home')
     props.handleCount()
   }
   return (

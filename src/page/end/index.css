@@ -1,0 +1,9 @@
+.end {
+    text-align: center;
+    font-family: '黑体';
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}

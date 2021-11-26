@@ -7,6 +7,7 @@ import Teach from '../teach'
 import Service from '../../common/service'
 import QuizA from '../quizA'
 import QuizB from '../quizB'
+import End from '../end'
     
 
 export const test = [
@@ -137,12 +138,14 @@ export default function Layouts() {
     }
     return (
         <div>
-            <Routes>
-                <Route path='quizsA' element={<QuizA handleCount={handleCount} />} />
-                <Route path='quizsB' element={<QuizB />} />
-            </Routes>
             {
-                location.pathname.includes('quizs') ? null :
+                location.pathname.includes('quizs') ?
+                    <Routes>
+                        <Route path='quizsend' element={<End />} />
+                        <Route path='quizsA' element={<QuizA handleCount={handleCount} />} />
+                        <Route path='quizsB' element={<QuizB />} />
+                    </Routes>
+                    :
                     <Layout count={count}>
                         <Routes>
                             <Route path='home' element={<Teach />} />
