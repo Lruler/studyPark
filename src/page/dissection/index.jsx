@@ -78,7 +78,7 @@ export default function Dissection(props) {
                                     <div className="hr"></div>
                                     <div className="reply-detail">
                                         <Avatar shape="circle" icon={<UserOutlined />} />
-                                        <b>用户名{user[index]}:</b>
+                                        <b>用户名{user}:</b>
                                         <br />
                                         <div className="detail">
                                             {replyComment[index].ques}

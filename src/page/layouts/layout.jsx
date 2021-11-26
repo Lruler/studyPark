@@ -71,7 +71,7 @@ export default function Layouts() {
     const [isReply, setIsReply] = useState(false)
     const [count, setCount] = useState(0)
     const [time, setTime] = useState(true)
-    const [user] = useState([Math.random().toString().slice(-3), Math.random().toString().slice(-3), Math.random().toString().slice(-3), Math.random().toString().slice(-3)])
+    const [user] = useState(Math.random().toString().slice(-3))
     const [reply, setReply] = useState({})
     const [getReply, setGetReply] = useState(true)
     let point = 0
