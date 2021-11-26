@@ -12,7 +12,7 @@ export default function Dissection(props) {
     const { user, reply, getReply } = props
     const [like, setLike] = useState(Array(4).fill(false))
     const [disLike, setDisLike] = useState(Array(4).fill(false))
-
+    const [isButton, setIsButton] = useState(false)
     const navagate = useNavigate()
 
     let qesNum = Object.keys(reply)
@@ -51,13 +51,17 @@ export default function Dissection(props) {
     if (comment === '4' && getReply) {
         props.handleReply()
     }
+    const button = (
+        <div className="quizB" onClick={() => navagate('/layout/quizsB')}>跳转问卷B</div>
+    )
     return (
         <>
             {
                 props.isReply ?
-                    <div className='body'>
+                <div className='body'>
                     {
                         newTest.map((_, index) => {
+                        if(!isButton) setIsButton(true)
                         let replyTest = []
                         let replyAnswer = []
                         replyAnswer.push(newAnswer[index])
@@ -101,8 +105,8 @@ export default function Dissection(props) {
                             </div>
                             )
                         })
-                    }
-                     <div className="quizB" onClick={() => navagate('/layout/quizsB')}>跳转问卷B</div>
+                        }
+                        {isButton? button : null}
                 </div> :
                     <div>
                     别心急～暂时还没人回复你哦
