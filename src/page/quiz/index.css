@@ -8,11 +8,13 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    height: 60%;
     /* height: 40%;
     width: 60%; */
     background-color: rgb(217, 218, 221);
     padding: 3vh 3vw;
     font-size: 20px;
+    box-sizing: border-box;
 }
 
 .text {
@@ -23,21 +25,24 @@
     width: 100%;
 }
 
+.i {
+    margin-top: 2vh;
+}
+
 .clause {
-    margin-top: 1vh;
+    margin-top: 4vh;
 }
 
 .button-quiz {
-    margin-top: 2vh;
+    margin-top: 4vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #2140E3;
+    background-color: #6395D6;
     height: 8vh;
     width: 15vw;
     border-radius: 8%;
     cursor: pointer;
-    color: white;
 }
 
 .button-quiz:hover{
@@ -45,7 +50,7 @@
 }
 
 .forbid {
-    margin-top: 2vh;
+    margin-top: 4vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -53,7 +58,6 @@
     width: 15vw;
     border-radius: 8%;
     cursor: pointer;
-    color: white;
     background-color: rgb(177, 177, 173);
 }
 
@@ -67,13 +71,12 @@
 
 .submit {
     margin-top: 4vh;
-    color: white;
     width: 8vw;
     height: 7vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #2140E3;
+    background-color: #6395D6;
     border-radius: 8%;
     cursor: pointer;
 }
@@ -84,7 +87,6 @@
 
 .no-submit {
     margin-top: 4vh;
-    color: white;
     width: 8vw;
     height: 7vh;
     display: flex;

@@ -6,14 +6,14 @@
 }
 
 
-.bcimg {
+/* .bcimg {
     position: relative;
     height: 100vh;
     width: 100vw;
     background-image: url(./img/bc.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-}
+} */
 
 /* .entring {
     position: absolute;
@@ -26,7 +26,6 @@
 
 .entring-msg {
     font-family: "黑体";
-    color: white;
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -42,7 +41,6 @@
 }
 
 .title {
-    color: white;
     font-family: "ChaoZiSheFengYunJian-2";
     font-size: 80px;
 }
@@ -62,16 +60,15 @@
 
 .landinglabel input {
     border-radius: 5px;
+    border: 1px solid #6395D6;
     width: auto;
-    border: 0;
     width: 67%;
     color: #000;
 }
 
 .entring-button {
     position: absolute;
-    color: white;
-    background-color: #2140E3;
+    background-color: #6395D6;
     cursor: pointer;
     text-align: center;
     width: 10%;
@@ -98,12 +95,11 @@
 }
 
 .la-span {
-    color: white;
-    background-color: #2140E3;
+    background-color: #6395D6;
     height: 40px;
     padding: 0 10px;
     line-height: 40px;
     border-radius: 5px;
-    width: 33%;
+    width: 20%;
     text-align: center;
 }

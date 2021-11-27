@@ -73,10 +73,10 @@ export default function Quiz(props) {
           <div className="start">
             <div className="text">
               <h2>平台测试题</h2>
-              <div>
-                <p>1.仅可答题一次！请认真仔细阅题！</p>
-                <p>2.测验限时30分钟</p>
-                <p>3.题型为选择题 且都是单选题</p>
+              <div className='i'>
+                <div>1.仅可答题一次！请认真仔细阅题！</div>
+                <div>2.测验限时30分钟</div>
+                <div>3.题型为选择题 且都是单选题</div>
               </div>
               <div className="clause">
                 <input type="checkbox" name="clause" onChange={handleClause} checked={clause} />
