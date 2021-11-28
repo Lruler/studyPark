@@ -50,3 +50,12 @@
 .quiz-t {
     margin-bottom: 5vh;
 }
+
+.quiz-q {
+    font-size: 15px;
+}
+
+.quiz-q-i {
+    padding: 5px;
+    border-bottom: 1px solid gainsboro;
+}

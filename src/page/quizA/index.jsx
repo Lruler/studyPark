@@ -72,6 +72,7 @@ export default function QuizA(props) {
     navigate('/layout/home')
     props.handleCount()
   }
+  const radios = [1,2,3,4,5]
   return (
     <div className='quiz-c'>
       <div className="quiz-i">
@@ -95,8 +96,20 @@ export default function QuizA(props) {
           </div>
           <div className="quiz-q">
             {
-              quizAs1.map((quiz) => {
-                return <div>{quiz}</div>
+              quizAs1.map((quiz, index) => {
+                return (
+                  <div className='quiz-q-i' key={quiz}>
+                    <b>{quiz}</b>
+                    {radios.map((radio) => {
+                      return (
+                        <label key={quiz + radio} htmlFor="">
+                          <input
+                            name={quiz}
+                            type="radio" />
+                        </label>
+                      )
+                    })}
+                  </div>)
               })
             }
           </div>
