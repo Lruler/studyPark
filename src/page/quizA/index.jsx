@@ -4,7 +4,7 @@ import './index.css'
 
 export default function QuizA(props) {
   const navigate = useNavigate()
-  const quizAs = [
+  const quizAs1 = [
    ' 1. 我觉得学习是一件很快乐的事情。',
    ' 2. 学习使我产生一种沮丧感。',
    ' 3. 我会因为在网课中表现好而感到自豪。',
@@ -50,18 +50,58 @@ export default function QuizA(props) {
     '43. 我讨厌学习。',
     '44. 我能心平气和的对待学习任务。'
   ]
+  const quizAs2 = [
+    '1. 我不能准确明白视频内容表达的意思。',
+    '2. 我觉得自己具有解决网络学习中遇到问题的能力。',
+    '3. 我认为自己看视频时总是开小差以至于不能认真听讲。',
+    '4. 我总能够找出视频中的重点进行网络学习。',
+    '5. 不管测验成绩好坏，我从不怀疑自己的学习能力。',
+    '6. 我具有向富有挑战性的学习任务发起挑战的能力。',
+    '7. 我觉得自己的学习能力很强。',
+    '8. 我有能力在网课中掌握老师所教授的知识。',
+    '9. 面对不理想的成绩我也能平静地分析错误原因。',
+    '10. 我认为自己有能力通过网络学习取得好成绩。',
+    '11. 我可以将现在所学内容与实际生活结合起来思考问题。',
+    '12. 在日常学习中，我选择那些较难的学习任务进行学习。',
+    '13. 我可以将本次视频学习中所学到的知识联系起来思考。',
+    '14. 完成测验时我总能记起老师讲过的每一个细节。',
+    '15. 我觉得我可以学以致用。',
+    '16、无论何时，我能够根据自己的实际情况制定学习目标、安排时间。'
+  ]
   const handleToA = () => {
     navigate('/layout/home')
     props.handleCount()
   }
   return (
-    <div>
-      我是问卷A
-      {
-        quizAs.map((quiz) => {
-          return <div>{quiz}</div>
-        })
-      }
+    <div className='quiz-c'>
+      <div className="quiz-i">
+        <div className="quiz-h">问卷A</div>
+        <div className="quiz-content">
+          <div className="quiz-t">
+            <h4><span className='red'>*&nbsp;</span>下面是你在学习中可能有的一些情绪体验，请您选择一个最符合你实际情况的答案。</h4>
+            每道题后面的五个数字代表这些情绪体验出现的不同频率：
+            <br />
+            1代表 “从来没有”；
+            <br />
+            2代表“偶尔如此”；
+            <br />
+            3代表“有时如此”；
+            <br />
+            4代表“经常如此”；
+            <br />
+            5代表 “总是如此”。
+            <br />
+            请仔细阅读每一道题目，并自行选择。
+          </div>
+          <div className="quiz-q">
+            {
+              quizAs1.map((quiz) => {
+                return <div>{quiz}</div>
+              })
+            }
+          </div>
+        </div>
+      </div>
       <div onClick={handleToA} className="tostudy">提交并跳转学习平台</div>
     </div>
   )

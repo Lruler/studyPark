@@ -66,7 +66,7 @@ export default function Layouts() {
     const opt = ['A', 'B', 'C', 'D']
     const [answer, setAnswer] = useState(Array(10).fill(0))
     const [result, setResult] = useState([])
-    const [info, setInfo] = useState({ tel: '', user_name: '', group_id: 0 })
+    const [info, setInfo] = useState({ tel: '1', user_name: '111', group_id: 0 })
     const [start, setStart] = useState(false)
     const [isReply, setIsReply] = useState(false)
     const [count, setCount] = useState(0)
@@ -79,9 +79,9 @@ export default function Layouts() {
         setInfo((preInfo) => {
             return {
                 ...preInfo,
-                tel: location.state.number,
-                user_name: location.state.userName,
-                group_id: +location.state.group
+                tel: location.state?.number,
+                user_name: location.state?.userName,
+                group_id: +location.state?.group
             }
         })
     // eslint-disable-next-line react-hooks/exhaustive-deps
