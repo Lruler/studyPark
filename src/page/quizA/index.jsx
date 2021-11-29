@@ -69,11 +69,12 @@ export default function QuizA(props) {
     '15. 我觉得我可以学以致用。',
     '16、无论何时，我能够根据自己的实际情况制定学习目标、安排时间。'
   ]
-  const [quizAnswer, setQuizAnswer] = useState(Array(44).fill(0))
+  const [quizAnswer, setQuizAnswer] = useState(Array(60).fill(0))
   const handleToA = () => {
+    console.log(quizAnswer)
     if (quizAnswer.includes(0)) alert('请完成所有题目！')
-    // navigate('/layout/home')
-    // props.handleCount()
+    navigate('/layout/home')
+    props.handleCount()
   }
   const radios = [1, 2, 3, 4, 5]
   const radioType = ['从来没有', '偶尔如此', '有时如此', '经常如此', '总是如此']
@@ -118,6 +119,54 @@ export default function QuizA(props) {
                           <div key={quiz + radio} className={index % 10 === 0 ? 'quiz-rt' : 'quiz-radio'}>
                             {index % 10 === 0 ? <div className='quiz-type'><b>{radioType[radio - 1]}</b></div> : null}
                             <label className='quiz-label' htmlFor={`${index}` +  radio }>
+                              <input
+                                className='radio-in'
+                                name={quiz}
+                                type="radio"
+                                value={radio}
+                                id={`${index}` + radio}
+                                onChange={(e) => handleQuizA(e, index)}
+                              />
+                            </label>
+                          </div>
+                        )
+                      })}
+                    </div>
+                  </div>)
+              })
+            }
+          </div>
+          <div className="quiz-t">
+            <h4><span className='red'>*&nbsp;</span>下面是你在学习中可能有的一些自我效能感体验，请您选择一个最符合你实际情况的答案。</h4>
+            每道题后面的五个数字代表这些自我效能感体验出现的不同频率：
+            <br />
+            1代表 “从来没有”；
+            <br />
+            2代表“偶尔如此”；
+            <br />
+            3代表“有时如此”；
+            <br />
+            4代表“经常如此”；
+            <br />
+            5代表 “总是如此”。
+            <br />
+            请仔细阅读每一道题目，并自行选择。
+          </div>
+          <div className="quiz-q">
+            {
+              quizAs2.map((quiz, index) => {
+                index = index + 44
+                return (
+                  <div className='quiz-q-i' key={quiz}>
+                    <div className="quiz-ques">
+                      <b>{quiz}</b>
+                    </div>
+                    <div className="quiz-radios">
+                      {radios.map((radio) => {
+                        return (
+                          <div key={quiz + radio} className={index % 10 === 0 ? 'quiz-rt' : 'quiz-radio'}>
+                            {index % 10 === 0 ? <div className='quiz-type'><b>{radioType[radio - 1]}</b></div> : null}
+                            <label className='quiz-label' htmlFor={`${index}` + radio}>
                               <input
                                 className='radio-in'
                                 name={quiz}
