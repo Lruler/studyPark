@@ -100,12 +100,14 @@ export default function QuizA(props) {
               quizAs1.map((quiz, index) => {
                 return (
                   <div className='quiz-q-i' key={quiz}>
-                    <b>{quiz}</b>
-                    <div className="radios">
+                    <div className="quiz-ques">
+                      <b>{quiz}</b>
+                    </div>
+                    <div className="quiz-radios">
                       {radios.map((radio) => {
                         return (
-                          <div className='radio'>
-                            {index % 10 === 0 ?<div><b>{radioType[radio - 1]}</b></div> : null}
+                          <div className={index % 10 === 0 ? 'quiz-rt' : 'quiz-radio'}>
+                            {index % 10 === 0 ? <div className='quiz-type'><b>{radioType[radio - 1]}</b></div> : null}
                             <label key={quiz + radio} htmlFor="">
                               <input
                                 name={quiz}

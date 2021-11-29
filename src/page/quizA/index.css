@@ -1,6 +1,6 @@
 .tostudy {
-    margin-top: 2vh;
-    margin-left: 5vw;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -34,6 +34,7 @@
     align-items: center;
     background-color: white;
     width: 60%;
+    margin-top: 10vh;
 }
 
 .quiz-content {
@@ -59,11 +60,33 @@
 .quiz-q-i {
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
     padding: 5px;
     border-bottom: 1px solid gainsboro;
 }
 
-.radios {
+.quiz-ques {
+    width: 55%;
+}
+
+.quiz-radios {
     display: flex;
-    width: 60%;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    width: 45%;
+}
+
+.quiz-radio {
+    box-sizing: border-box;
+}
+
+.quiz-type {
+    position: absolute;
+    top: -5vh;
+    width: 100px;
+}
+
+.quiz-rt {
+    margin-top: 5vh;
+    position: relative;
 }
