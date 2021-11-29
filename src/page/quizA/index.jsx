@@ -72,7 +72,8 @@ export default function QuizA(props) {
     navigate('/layout/home')
     props.handleCount()
   }
-  const radios = [1,2,3,4,5]
+  const radios = [1, 2, 3, 4, 5]
+  const radioType =['从来没有', '偶尔如此', '有时如此', '经常如此', '总是如此']
   return (
     <div className='quiz-c'>
       <div className="quiz-i">
@@ -96,18 +97,21 @@ export default function QuizA(props) {
           </div>
           <div className="quiz-q">
             {
-              quizAs1.map((quiz) => {
+              quizAs1.map((quiz, index) => {
                 return (
                   <div className='quiz-q-i' key={quiz}>
                     <b>{quiz}</b>
                     <div className="radios">
                       {radios.map((radio) => {
                         return (
-                          <label key={quiz + radio} htmlFor="">
-                            <input
-                              name={quiz}
-                              type="radio" />
-                          </label>
+                          <div className='radio'>
+                            {index % 10 === 0 ?<div><b>{radioType[radio - 1]}</b></div> : null}
+                            <label key={quiz + radio} htmlFor="">
+                              <input
+                                name={quiz}
+                                type="radio" />
+                            </label>
+                          </div>
                         )
                       })}
                     </div>
