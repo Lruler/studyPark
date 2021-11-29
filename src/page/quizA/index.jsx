@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router'
+import { useState } from 'react/cjs/react.development'
 import './index.css'
 
 export default function QuizA(props) {
@@ -68,12 +69,20 @@ export default function QuizA(props) {
     '15. 我觉得我可以学以致用。',
     '16、无论何时，我能够根据自己的实际情况制定学习目标、安排时间。'
   ]
+  const [quizAnswer, setQuizAnswer] = useState(Array(44).fill(0))
   const handleToA = () => {
-    navigate('/layout/home')
-    props.handleCount()
+    if (quizAnswer.includes(0)) alert('请完成所有题目！')
+    // navigate('/layout/home')
+    // props.handleCount()
   }
   const radios = [1, 2, 3, 4, 5]
-  const radioType =['从来没有', '偶尔如此', '有时如此', '经常如此', '总是如此']
+  const radioType = ['从来没有', '偶尔如此', '有时如此', '经常如此', '总是如此']
+  const handleQuizA = (e, index) => {
+    setQuizAnswer((answer) => {
+      answer[index] = e.target.value
+      return answer
+    })
+  }
   return (
     <div className='quiz-c'>
       <div className="quiz-i">
@@ -105,15 +114,17 @@ export default function QuizA(props) {
                     </div>
                     <div className="quiz-radios">
                       {radios.map((radio) => {
-                        console.log(`${index}` +  radio )
                         return (
-                          <div className={index % 10 === 0 ? 'quiz-rt' : 'quiz-radio'}>
+                          <div key={quiz + radio} className={index % 10 === 0 ? 'quiz-rt' : 'quiz-radio'}>
                             {index % 10 === 0 ? <div className='quiz-type'><b>{radioType[radio - 1]}</b></div> : null}
-                            <label className='quiz-label' key={quiz + radio} htmlFor={`${index}` +  radio }>
+                            <label className='quiz-label' htmlFor={`${index}` +  radio }>
                               <input
+                                className='radio-in'
                                 name={quiz}
                                 type="radio"
+                                value={radio}
                                 id={`${index}` + radio}
+                                onChange={(e) => handleQuizA(e, index)}
                               />
                             </label>
                           </div>

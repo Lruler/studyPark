@@ -85,6 +85,7 @@
 }
 
 .quiz-label {
+    box-sizing: border-box;
     display: flex;
     height: 35px;
     width: 70px;
@@ -96,6 +97,10 @@
 
 .quiz-label:hover {
     background-color: gainsboro;
+}
+
+.radio-in {
+    margin-right: 1.5vw;
 }
 
 .quiz-rt {
