@@ -41,6 +41,7 @@
 }
 
 .quiz-h {
+    margin-top: 5vh;
     color: #0095ff;
     font-size: 24px;
     font-weight: bold;
@@ -56,6 +57,8 @@
 }
 
 .quiz-q-i {
+    display: flex;
+    justify-content: space-between;
     padding: 5px;
     border-bottom: 1px solid gainsboro;
 }

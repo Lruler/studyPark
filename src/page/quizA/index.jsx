@@ -96,19 +96,21 @@ export default function QuizA(props) {
           </div>
           <div className="quiz-q">
             {
-              quizAs1.map((quiz, index) => {
+              quizAs1.map((quiz) => {
                 return (
                   <div className='quiz-q-i' key={quiz}>
                     <b>{quiz}</b>
-                    {radios.map((radio) => {
-                      return (
-                        <label key={quiz + radio} htmlFor="">
-                          <input
-                            name={quiz}
-                            type="radio" />
-                        </label>
-                      )
-                    })}
+                    <div className="radios">
+                      {radios.map((radio) => {
+                        return (
+                          <label key={quiz + radio} htmlFor="">
+                            <input
+                              name={quiz}
+                              type="radio" />
+                          </label>
+                        )
+                      })}
+                    </div>
                   </div>)
               })
             }
