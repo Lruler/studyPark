@@ -108,10 +108,12 @@ export default function QuizA(props) {
                         return (
                           <div className={index % 10 === 0 ? 'quiz-rt' : 'quiz-radio'}>
                             {index % 10 === 0 ? <div className='quiz-type'><b>{radioType[radio - 1]}</b></div> : null}
-                            <label key={quiz + radio} htmlFor="">
+                            <label className='quiz-label' key={quiz + radio} htmlFor={`${index}` + { radio }}>
                               <input
                                 name={quiz}
-                                type="radio" />
+                                type="radio"
+                                id={`${index}` + {radio}}
+                              />
                             </label>
                           </div>
                         )

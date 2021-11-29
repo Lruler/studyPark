@@ -20,6 +20,7 @@
 .red {
     color: red;
 }
+
 .quiz-c {
     display: flex;
     align-items: center;
@@ -35,6 +36,7 @@
     background-color: white;
     width: 60%;
     margin-top: 10vh;
+    padding-bottom: 20vh;
 }
 
 .quiz-content {
@@ -66,27 +68,38 @@
 }
 
 .quiz-ques {
-    width: 55%;
+    width: 52%;
+    font-size: 15px;
 }
 
 .quiz-radios {
     display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-around;
-    width: 45%;
+    width: 48%;
 }
 
 .quiz-radio {
+    display: flex;
+    flex-direction: column;
     box-sizing: border-box;
+    width: 20%;
 }
 
-.quiz-type {
-    position: absolute;
-    top: -5vh;
-    width: 100px;
+.quiz-label {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 6px;
+}
+
+.quiz-label:hover {
+    background-color: gainsboro;
 }
 
 .quiz-rt {
-    margin-top: 5vh;
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    height: 8vh;
 }
