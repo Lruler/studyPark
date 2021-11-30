@@ -73,6 +73,33 @@ let Service = {
                 group_id: `${group_id}`
             }
         })
+    },
+    // 提交quizA
+    postQuizA(id, user_name, group_id, time, tel, answer) {
+        return Fetch(BASE + '/q1', {
+            method: "POST",
+            data: {
+                id,
+                user_name,
+                group_id,
+                time,
+                tel,
+                answer
+            }
+        })
+    },
+    postQuizB(id, user_name, group_id, time, tel, answer) {
+        return Fetch(BASE + '/q2', {
+            method: "POST",
+            data: {
+                id,
+                user_name,
+                group_id,
+                time,
+                tel,
+                answer
+            }
+        })
     }
 };
 
