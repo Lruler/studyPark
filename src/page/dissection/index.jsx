@@ -70,6 +70,7 @@ export default function Dissection(props) {
                         for (const ques in reply) {
                             replyComment.push({ques: reply[ques]})
                         }
+                        console.log(user[index])
                         return (
                             <div className='message' key={index}>
                                 <div className="comment">
@@ -82,7 +83,7 @@ export default function Dissection(props) {
                                     <div className="hr"></div>
                                     <div className="reply-detail">
                                         <Avatar shape="circle" icon={<UserOutlined />} />
-                                        <b>用户名{user}:</b>
+                                        <b>用户名{user[index]}:</b>
                                         <br />
                                         <div className="detail">
                                             {replyComment[index].ques}

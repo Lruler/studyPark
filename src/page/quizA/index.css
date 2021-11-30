@@ -78,6 +78,11 @@
     width: 48%;
 }
 
+.quiz-radios-B {
+    display: flex;
+    width: 70%;
+}
+
 .quiz-radio {
     display: flex;
     flex-direction: column;
@@ -109,4 +114,8 @@
     flex-direction: column;
     width: 20%;
     height: 8vh;
+}
+
+.quiz-type {
+    text-align: center;
 }

@@ -71,10 +71,12 @@ export default function QuizA(props) {
   ]
   const [quizAnswer, setQuizAnswer] = useState(Array(60).fill(0))
   const handleToA = () => {
-    console.log(quizAnswer)
     if (quizAnswer.includes(0)) alert('请完成所有题目！')
-    navigate('/layout/home')
-    props.handleCount()
+    else {
+      const quizA = quizAnswer.join("")
+      navigate('/layout/home')
+      props.handleCount()
+    }
   }
   const radios = [1, 2, 3, 4, 5]
   const radioType = ['从来没有', '偶尔如此', '有时如此', '经常如此', '总是如此']
