@@ -85,10 +85,8 @@ export default function QuizA(props) {
             const { user_name, group_id, timeStr, tel, point } = props.info
             Service.postQuizA(user_name, group_id, timeStr, tel, point, answerB).then(() => {
                 alert('提交成功')
-                navigate('/layout/home')
+                navigate('/layout/quizsend')
                 props.handleCount()
-            }).catch(() => {
-                alert('提交失败 请检查网络！')
             })
         }
     }
@@ -120,9 +118,10 @@ export default function QuizA(props) {
                                             <div className="quiz-radios-B">
                                                 {
                                                     radiosB.map((radio) => {
+                                                        let type = (radio - 1) === 3 ? '' : radiosTypeBB[index]
                                                         return (
                                                             <div className="quiz-rt-B">
-                                                                <div className="quiz-type"><b>{radioTypeB[radio - 1] + radiosTypeBB[index]}</b></div>
+                                                                <div className="quiz-type"><b>{radioTypeB[radio - 1] + type}</b></div>
                                                                 <label className='quiz-label-B' htmlFor={`${index}` + radio}>
                                                                     <input
                                                                         className='radio-in'

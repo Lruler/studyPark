@@ -70,7 +70,6 @@ export default function Dissection(props) {
                         for (const ques in reply) {
                             replyComment.push({ques: reply[ques]})
                         }
-                        console.log(user[index])
                         return (
                             <div className='message' key={index}>
                                 <div className="comment">
