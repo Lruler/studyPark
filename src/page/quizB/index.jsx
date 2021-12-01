@@ -83,7 +83,7 @@ export default function QuizA(props) {
         else {
             const answerB = quizAnswer.join("")
             const { user_name, group_id, timeStr, tel, point } = props.info
-            Service.postQuizA(user_name, group_id, timeStr, tel, point, answerB).then(() => {
+            Service.postQuizB(user_name, group_id, timeStr, tel, point, answerB).then(() => {
                 alert('提交成功')
                 navigate('/layout/quizsend')
                 props.handleCount()
