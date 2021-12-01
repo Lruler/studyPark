@@ -88,7 +88,7 @@ let Service = {
             }
         })
     },
-    postQuizB(user_name, group_id, point, time, tel, answer) {
+    postQuizB(user_name, group_id, time, tel, point, answer) {
         return Fetch(BASE + '/q2', {
             method: "POST",
             data: {

@@ -86,7 +86,6 @@ export default function QuizA(props) {
             Service.postQuizB(user_name, group_id, timeStr, tel, point, answerB).then(() => {
                 alert('提交成功')
                 navigate('/layout/quizsend')
-                props.handleCount()
             })
         }
     }
