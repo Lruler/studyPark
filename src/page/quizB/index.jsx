@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router'
 import { useState } from 'react/cjs/react.development'
+import Service from '../../common/service'
 import './index.css'
 
 export default function QuizA(props) {
@@ -82,8 +83,14 @@ export default function QuizA(props) {
         if (quizAnswer.includes(0)) alert('请完成所有题目！')
         else {
             const answerB = quizAnswer.join("")
-            console.log(answerB)
-            navigate('/layout/home')
+            const { user_name, group_id, timeStr, tel, point } = props.info
+            Service.postQuizA(user_name, group_id, timeStr, tel, point, answerB).then(() => {
+                alert('提交成功')
+                navigate('/layout/home')
+                props.handleCount()
+            }).catch(() => {
+                alert('提交失败 请检查网络！')
+            })
         }
     }
     const radios = [1, 2, 3, 4, 5]

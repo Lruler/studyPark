@@ -1,14 +1,14 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { Navigate, Route, Routes, useLocation } from 'react-router'
 import Layout from './index'
 import Dissection from '../dissection'
 import Quiz from '../quiz'
-import Teach from '../teach' 
+import Teach from '../teach'
 import Service from '../../common/service'
 import QuizA from '../quizA'
 import QuizB from '../quizB'
 import End from '../end'
-    
+
 
 export const test = [
     {
@@ -18,7 +18,7 @@ export const test = [
     },
     {
         question: '2.如何操作可以使后续对图层的编辑都是非破坏性的，可随时撤销以及修改配置（ ）',
-        answer: ['复制图层', '备份图层' ,'打开图层' ,'保存图层'],
+        answer: ['复制图层', '备份图层', '打开图层', '保存图层'],
         right: 1
     },
     {
@@ -33,17 +33,17 @@ export const test = [
     },
     {
         question: '5.大幅调（ ）“高光”值，调（	 ）“阴影”值，能够将更多细节带出，让照片更具备HDR效果',
-        answer: ['低  低', '低	高','高  低','高  高'],
+        answer: ['低  低', '低	高', '高  低', '高  高'],
         right: 1
     },
     {
         question: '6.降低“高光”会同时让灯光亮度减弱，所以适当提高“（  ）”提升灯光亮度',
-        answer: ['阴影','白色','黑色','曝光'],
+        answer: ['阴影', '白色', '黑色', '曝光'],
         right: 1
     },
     {
         question: '7.对细节丰富的照片，或许你会提高“清晰度”值，但降低到（  ）反而对营造灯光效果更有效',
-        answer: ['-12到-10', '-10到-8','-8到-6', '-6到-4'],
+        answer: ['-12到-10', '-10到-8', '-8到-6', '-6到-4'],
         right: 1
     },
     {
@@ -53,7 +53,7 @@ export const test = [
     },
     {
         question: '9.在菜单项顶部，选择“（  ）”，调整它能够急需强化“粉蓝”色调',
-        answer: ['色调曲线','HSL调整','效果', '分离色调'],
+        answer: ['色调曲线', 'HSL调整', '效果', '分离色调'],
         right: 3
     },
     {
@@ -75,6 +75,7 @@ export default function Layouts() {
     const [reply, setReply] = useState({})
     const [getReply, setGetReply] = useState(true)
     let point = 0
+    let timeStr = ''
     useEffect(() => {
         setInfo((preInfo) => {
             return {
@@ -84,7 +85,7 @@ export default function Layouts() {
                 group_id: +location.state?.group
             }
         })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     const handleAnswer = (e) => {
         let newAnswer = answer
@@ -96,7 +97,7 @@ export default function Layouts() {
             alert('请完成所有题目！')
             return false
         }
-        let timeStr = `${29 - time.min}分钟${60 - time.sec}秒`
+        timeStr = `${29 - time.min}分钟${60 - time.sec}秒`
         let tResult = []
         for (let i = 0; i < 10; i++) {
             +answer[i][1] === test[i].right ? tResult.push(true) : tResult.push(false)
@@ -105,10 +106,12 @@ export default function Layouts() {
         tResult.forEach(rlt => {
             if (rlt === true) point += 10
         });
-        let postInfo = {...info, time: timeStr, point: point}
-        Service.info(postInfo).then((res) => {
-            alert(`提交成功！你的得分是${res.data.point}`)
-        })
+        setInfo((preInfo) => ({
+            ...preInfo,
+            point,
+            timeStr
+        }))
+        alert(`提交成功！你的得分是${point},用时${timeStr}`)
         window.scrollTo({
             left: 0,
             top: 0,
@@ -142,8 +145,13 @@ export default function Layouts() {
                 location.pathname.includes('quizs') ?
                     <Routes>
                         <Route path='quizsend' element={<End />} />
-                        <Route path='quizsA' element={<QuizA handleCount={handleCount} />} />
-                        <Route path='quizsB' element={<QuizB />} />
+                        <Route
+                            path='quizsA'
+                            element={<QuizA
+                                handleCount={handleCount}
+                                info={info}
+                            />} />
+                        <Route path='quizsB' element={<QuizB info={info} />} />
                     </Routes>
                     :
                     <Layout count={count}>
