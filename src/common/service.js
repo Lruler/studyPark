@@ -49,7 +49,7 @@ let Service = {
         return Fetch(BASE + '/info', {
             method: 'POST',
             data: {
-                tel: info.tel,
+                sex: info.sex,
                 point: info.point,
                 user_name: info.user_name,
                 time: info.time,
@@ -75,7 +75,7 @@ let Service = {
         })
     },
     // 提交quizA
-    postQuizA( user_name, group_id, time, tel, point, answer) {
+    postQuizA( user_name, group_id, time, sex, point, answer) {
         return Fetch(BASE + '/q1', {
             method: "POST",
             data: {
@@ -83,12 +83,12 @@ let Service = {
                 group_id,
                 point,
                 time,
-                tel,
+                sex,
                 answer
             }
         })
     },
-    postQuizB(user_name, group_id, time, tel, point, answer) {
+    postQuizB(user_name, group_id, time, sex, point, answer) {
         return Fetch(BASE + '/q2', {
             method: "POST",
             data: {
@@ -96,7 +96,7 @@ let Service = {
                 group_id,
                 point,
                 time,
-                tel,
+                sex,
                 answer
             }
         })

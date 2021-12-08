@@ -74,8 +74,8 @@ export default function QuizA(props) {
     if (quizAnswer.includes(0)) alert("请完成所有题目！");
     else {
       const quizA = quizAnswer.join("");
-      const { user_name, group_id, timeStr, tel, point } = props.info;
-      Service.postQuizA(user_name, group_id, timeStr, tel, point, quizA)
+      const { user_name, group_id, timeStr, sex, point } = props.info;
+      Service.postQuizA(user_name, group_id, timeStr, sex, point, quizA)
         .then(() => {
           alert("提交成功");
           navigate("/layout/home");

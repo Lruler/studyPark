@@ -44,17 +44,13 @@ export default function Landing() {
               <input onChange={handleGroup} value={group} type="text" />
           </label>
             <label className='landinglabel' htmlFor="number">
-              <span className='la-span'>联系方式</span>
+              <span className='la-span'>性别</span>
               <input onChange={handleNumber} value={number} type="text" />
           </label>
         </div>
         </div>
         <div onClick={handleEntring} className="entring-button">
           进入
-        </div>
-        <div className="tip">
-          <p>【联系方式仅用于发放被试费，请优先填写与支付宝绑定的电话号码，
-            若未绑定支付宝,则填写QQ号/微信号/电话号码/其他联系方式，填写格式为:支付宝xxxxxxx】</p>
         </div>
       </div>
     </>
