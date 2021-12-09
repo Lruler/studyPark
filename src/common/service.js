@@ -75,7 +75,7 @@ let Service = {
         })
     },
     // 提交quizA
-    postQuizA( user_name, group_id, time, sex, point, answer) {
+    postQuizA(user_name, group_id, time, sex, point, answer) {
         return Fetch(BASE + '/q1', {
             method: "POST",
             data: {

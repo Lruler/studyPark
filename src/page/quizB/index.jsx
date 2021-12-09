@@ -81,7 +81,7 @@ export default function QuizA(props) {
   const handleToA = () => {
     if (quizAnswer.includes(0)) alert("请完成所有题目！");
     else {
-      const answerB = quizAnswer.join("");
+      const answerB = quizAnswer.join(" ");
       const { user_name, group_id, timeStr, sex, point } = props.info;
       Service.postQuizB(user_name, group_id, timeStr, sex, point, answerB).then(
         () => {
